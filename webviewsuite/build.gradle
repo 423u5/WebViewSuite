@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 35
-        versionCode 104
-        versionName "1.0.4"
+        versionCode 105
+        versionName "1.0.5"
         multiDexEnabled true
     }
 
@@ -35,7 +35,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.423u5'
             artifactId = 'WebViewSuite'
-            version = '1.0.4'
+            version = '1.0.5'
             afterEvaluate {
                 from components.findByName("release")
             }
