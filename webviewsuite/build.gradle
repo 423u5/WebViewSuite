@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'maven-publish'
 android {
     compileSdk 35
     namespace "com.asksira.webviewsuite"
@@ -30,26 +30,15 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'WebViewSuite'
-
-    publishedGroupId = 'com.asksira.android'
-    libraryName = 'WebViewSuite'
-    artifact = 'webviewsuite'
-
-    libraryDescription = 'A WebView that does not delay Activity creation, has built-in Progressbar and configurable through XML.'
-
-    siteUrl = 'https://github.com/siralam/WebViewSuite'
-    gitUrl = 'https://github.com/siralam/WebViewSuite.git'
-
-    libraryVersion = '1.0.3'
-
-    developerId = 'siralam'
-    developerName = 'Sira Lam'
-    developerEmail = 'sira.swlam@gmail.com'
-
-    licenseName = 'MIT License'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
-    allLicenses = ["MIT License"]
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.423u5'
+            artifactId = 'webviewsuite'
+            version = '1.0.3'
+            afterEvaluate {
+                from components.findByName("release")
+            }
+        }
+    }
 }
